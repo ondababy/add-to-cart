@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Product Cards</title>
+        <link rel="stylesheet"
+            href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+        <style>
+        .product-card {
+            border: none;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+            font-family: 'Poppins', sans-serif;
+        }
+        .product-card:hover {
+            transform: translateY(-10px);
+        }
+        .product-image {
+            height: 200px;
+            object-fit: contain;
+            border-radius: 5px;
+        }
+        .product-details {
+            text-align: center;
+        }
+        .product-name {
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        .brand-name {
+            font-size: 0.9rem;
+            color: #555;
+        }
+        .price {
+            color: #28a745;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+        .btn-container {
+            margin-top: 10px;
+        }
+
+        .star-rating {
+            color: gold;
+            font-size: 1.2rem;
+            margin: 5px 0;
+        }
+        .navbar {
+            background-color: black; 
+            padding: 1rem;
+        }
+
+        .navbar-brand {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .navbar-brand img {
+            height: 50px;
+            width: auto;
+            margin-right: 10px;
+        }
+
+        .navbar-nav .nav-link {
+            color: #fff;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 10px 15px;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: #ffcc00; 
+        }
+
+        .navbar-toggler {
+            border-color: #fff;
+        }
+
+        .navbar-toggler-icon {
+            color: #fff;
+        }
+
+        .navbar-toggler:hover {
+            background-color: #003366;
+        }
+
+        @media (max-width: 991.98px) {
+            .navbar-nav .nav-link {
+                color: #fff;
+                text-align: center;
+            }
+        }
+        
+        .btn-sm {
+            background-color: #8cd0e7;
+            color: #000;
+            font-family: 'Poppins', sans-serif;
+            padding: 0.5rem 1rem;
+            font-weight: 600;
+            font-size: 1rem;
+            width: 50%;
+        }
+
+        .cart-icon {
+            color: lightblue;
+            font-size: 1.2rem;
+            position: relative;
+        }
+
+        .badge {
+            position: absolute;
+            top: -5px;
+            right: -10px;
+            background-color: lightblue;
+            color: white;
+        }
+    </style>
+    </head>
+
+    <body>
+        <header>
+            <nav class="navbar navbar-expand-lg">
+                <div class="container-fluid">
+                    <a href="index.html">
+                        <img src="images/logo.png" alt="Logo" style="height: 50px; width: auto; margin-right: 10px;">
+                    </a>
+                    <!-- Cart Icon and Sign Up button -->
+                    <div class="ml-auto d-flex align-items-center">
+                        <a href="cart.html" class="btn" style="color: #333; font-size: 1.2rem;">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span class="badge badge-pill badge-primary" id="cart-count">0</span>
+                        </a>
+                        <button class="btn ml-3" style="background-color: skyblue; color: white; font-family: 'Roboto', sans-serif; border-radius: 20px;">
+                            Sign Up
+                        </button>
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+        <div class="container my-5">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="card product-card">
+                        <img src="images/bts3.png" alt="Product 1"
+                            class="card-img-top product-image">
+                        <div class="card-body product-details">
+                            <p class="product-name">BTS STICKERS</p>
+                            <p class="brand-name">BTS</p>
+                            <p>₱ <span class="price">999</span></p>
+                            <div class="star-rating">★★★★☆</div>
+                            <div class="btn-container">
+                                <button type="button" class="btn btn-primary btn-sm">ADD TO CART</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card product-card">
+                        <img src="images/btsbanner.jpg" alt="Product 2"
+                            class="card-img-top product-image">
+                        <div class="card-body product-details">
+                            <p class="product-name">BTS BANNER</p>
+                            <p class="brand-name">BTS</p>
+                            <p>₱ <span class="price">1299</span></p>
+                            <div class="star-rating">★★★☆☆</div>
+                            <div class="btn-container">
+                                <button type="button" class="btn btn-primary btn-sm">ADD TO CART</button>                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card product-card">
+                        <img src="images/bp2.png" alt="Product 3"
+                            class="card-img-top product-image">
+                        <div class="card-body product-details">
+                            <p class="product-name">BLACKPINK LIGHT STICK</p>
+                            <p class="brand-name">BLACKPINK</p>
+                            <p>₱ <span class="price">899</span></p>
+                            <div class="star-rating">★★★★★</div>
+                            <div class="btn-container">
+                                <button type="button" class="btn btn-primary btn-sm">ADD TO CART</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card product-card">
+                        <img src="images/item2.png" alt="Product 4"
+                            class="card-img-top product-image">
+                        <div class="card-body product-details">
+                            <p class="product-name">ENHYPEN ID CASE</p>
+                            <p class="brand-name">ENHYPEN</p>
+                            <p>₱ <span class="price">799</span></p>
+                            <div class="star-rating">★★★★☆</div>
+                            <div class="btn-container">
+                                <button type="button" class="btn btn-primary btn-sm">ADD TO CART</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card product-card">
+                        <img src="images/item3.png" alt="Product 5"
+                            class="card-img-top product-image">
+                        <div class="card-body product-details">
+                            <p class="product-name">ENHYPEN HOODIE</p>
+                            <p class="brand-name">ENHYPEN</p>
+                            <p>₱ <span class="price">1499</span></p>
+                            <div class="star-rating">★★☆☆☆</div>
+                            <div class="btn-container">
+                                <button type="button" class="btn btn-primary btn-sm">ADD TO CART</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card product-card">
+                        <img src="images/item6.png" alt="Product 6"
+                            class="card-img-top product-image">
+                        <div class="card-body product-details">
+                            <p class="product-name">ENHYPEN PHONE CASE</p>
+                            <p class="brand-name">ENHYPEN</p>
+                            <p>₱ <span class="price">699</span></p>
+                            <div class="star-rating">★★★☆☆</div>
+                            <div class="btn-container">
+                                <button type="button" class="btn btn-primary btn-sm">ADD TO CART</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="https://kit.fontawesome.com/a076d05399.js"
+            crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script
+            src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+        <script
+            src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    </body>
+</html>
