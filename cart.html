@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Cart</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha384-DyZ88mC6Up2uqS8Xh8sUSAcF0ySm91RXuhNCjQuHYLuD7eFI1Gc0i5b6PU6B84Dt" crossorigin="anonymous">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+
+        .container {
+            margin-top: 50px;
+        }
+
+        h2 {
+            font-weight: 700;
+            color: #343a40;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .table thead th {
+            background-color: lightblue;
+            color: white;
+            font-weight: bold;
+            border: none;
+        }
+
+        .table tfoot td {
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        .table-bordered th,
+        .table-bordered td {
+            border: 1px solid #dee2e6 !important;
+            vertical-align: middle;
+        }
+
+        .btn {
+            padding: 0.3rem 0.75rem;
+            font-size: 0.875rem;
+            border-radius: 0.2rem;
+        }
+
+        .btn-danger,
+        .btn-success {
+            color: white;
+        }
+
+        #grand-total {
+            color: #007bff;
+        }
+
+        .btn-outline-danger {
+            border: 1px solid #dc3545;
+            color: #dc3545;
+        }
+
+        .btn-outline-danger:hover {
+            background-color: #dc3545;
+            color: white;
+        }
+
+        footer {
+            background-color: black;
+        }
+        
+        footer a {
+            color: white;
+            transition: color 0.3s;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            color: #28a745;
+        }
+
+        footer i {
+            transition: color 0.3s;
+        }
+
+        footer i:hover {
+            color: #28a745;
+        }
+
+        .cart-item-image {
+            width: 60px;
+            height: auto;
+            border-radius: 4px;
+            margin-right: 10px;
+        }
+        .navbar {
+            background-color: black; 
+            padding: 1rem;
+        }
+
+        .navbar-brand {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .navbar-brand img {
+            height: 50px;
+            width: auto;
+            margin-right: 10px;
+        }
+
+        .navbar-nav .nav-link {
+            color: #fff;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 10px 15px;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: #ffcc00; 
+        }
+
+        .navbar-toggler {
+            border-color: #fff;
+        }
+
+        .navbar-toggler-icon {
+            color: #fff;
+        }
+
+        .navbar-toggler:hover {
+            background-color: #003366;
+        }
+
+        @media (max-width: 991.98px) {
+            .navbar-nav .nav-link {
+                color: #fff;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg">
+            <div class="container-fluid">
+                <a href="products.html">
+                    <img src="images/logo.png" alt="Logo" style="height: 50px; width: auto; margin-right: 10px;">
+                </a>
+            </div>
+        </nav>
+    </header>
+    <div class="container my-5">
+        <h2>Your Cart</h2>
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Total</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="cart-items">
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="3" class="text-right">Grand Total</td>
+                        <td id="grand-total">₱ 0</td>
+                        <td></td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+
+    <footer class=" py-4 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-3">
+                    <h5 class="text-dark font-weight-bold">About Us</h5>
+                    <p class="text-muted">We offer a unique selection of K-pop merchandise with fast shipping and reliable service. Browse our collections for exclusive items from your favorite bands!</p>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <h5 class="text-dark font-weight-bold">Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="products.html" class="text-muted">Home</a></li>
+                        <li><a href="products.html" class="text-muted">Shop</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <h5 class="text-dark font-weight-bold">Follow Us</h5>
+                    <div class="d-flex">
+                        <a href="#" class="text-muted mr-3"><i class="fab fa-facebook fa-2x"></i></a>
+                        <a href="#" class="text-muted mr-3"><i class="fab fa-twitter fa-2x"></i></a>
+                        <a href="#" class="text-muted mr-3"><i class="fab fa-instagram fa-2x"></i></a>
+                        <a href="#" class="text-muted"><i class="fab fa-youtube fa-2x"></i></a>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="row mt-3">
+                <div class="col text-center">
+                    <p class="text-muted">&copy; 2024 K-Pop Merchandise. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function loadCart() {
+            const cart = JSON.parse(localStorage.getItem("cart")) || {};
+            const cartItems = document.getElementById("cart-items");
+            cartItems.innerHTML = "";
+            let grandTotal = 0;
+
+            for (const id in cart) {
+                const item = cart[id];
+                const total = item.price * item.quantity;
+                grandTotal += total;
+
+                const row = `
+                    <tr>
+                        <td class="d-flex align-items-center">
+                            <img src="${item.image}" alt="${item.name}" class="cart-item-image">
+                            ${item.name}
+                        </td>
+                        <td>₱ ${item.price.toFixed(2)}</td>
+                        <td class="text-center">
+                            <button onclick="updateQuantity(${id}, -1)" class="btn btn-sm btn-outline-danger mr-2">-</button>
+                            ${item.quantity}
+                            <button onclick="updateQuantity(${id}, 1)" class="btn btn-sm btn-outline-success ml-2">+</button>
+                        </td>
+                        <td>₱ ${total.toFixed(2)}</td>
+                        <td class="text-center">
+                            <button onclick="removeItem(${id})" class="btn btn-sm btn-danger">Remove</button>
+                        </td>
+                    </tr>
+                `;
+                cartItems.insertAdjacentHTML("beforeend", row);
+            }
+
+            document.getElementById("grand-total").textContent = `₱ ${grandTotal.toFixed(2)}`;
+        }
+
+        function updateQuantity(id, change) {
+            let cart = JSON.parse(localStorage.getItem("cart"));
+            if (cart[id]) {
+                cart[id].quantity += change;
+                if (cart[id].quantity <= 0) {
+                    delete cart[id];
+                }
+                localStorage.setItem("cart", JSON.stringify(cart));
+                loadCart();
+            }
+        }
+
+        function removeItem(id) {
+            let cart = JSON.parse(localStorage.getItem("cart"));
+            delete cart[id];
+            localStorage.setItem("cart", JSON.stringify(cart));
+            loadCart();
+        }
+
+        document.addEventListener("DOMContentLoaded", loadCart);
+    </script>
+</body>
+</html>
