@@ -148,6 +148,7 @@
         }
 
         footer {
+            font-family: 'Poppins', sans-serif;
             background-color: black;
         }
         
@@ -176,7 +177,7 @@
             transform: translateX(-50%); 
             z-index: 1000; 
             display: none;
-            width: 300px; /* Adjust width as necessary */
+            width: 300px; 
         }
     </style>
 </head>
@@ -192,7 +193,10 @@
                         <i class="fas fa-shopping-cart cart-icon"></i>
                         <span class="badge badge-pill badge-primary" id="cart-count">0</span>
                     </a>
-                    <button class="btn ml-3" style="background-color: skyblue; color: white; font-family: 'Roboto', sans-serif; border-radius: 20px;">
+                    <button class="btn ml-3" style="background-color: skyblue; color: white; font-family: 'Poppins', sans-serif;">
+                        Login 
+                    </button>
+                    <button class="btn ml-3" style="background-color: skyblue; color: white; font-family: 'Poppins', sans-serif;">
                         Sign Up
                     </button>
                 </div>
@@ -247,12 +251,12 @@
 
     <script>
         const products = [
-            { id: 1, name: "BTS Stickers", price: 999, image: "images/bts3.png" },
-            { id: 2, name: "BTS Banner", price: 1299, image: "images/btsbanner.jpg" },
-            { id: 3, name: "Blackpink Light Stick", price: 899, image: "images/bp2.png" },
-            { id: 4, name: "Enhypen ID Case", price: 799, image: "images/item2.png" },
-            { id: 5, name: "Enhypen Hoodie", price: 1499, image: "images/item3.png" },
-            { id: 6, name: "Enhypen Phone Case", price: 699, image: "images/item6.png" }
+            { id: 1, name: "BTS Stickers", brand: "BTS", price: 999, image: "images/bts3.png" },
+            { id: 2, name: "BTS Banner", brand: "BTS", price: 1299, image: "images/btsbanner.jpg" },
+            { id: 3, name: "Blackpink Light Stick", brand: "BLACKPINK", price: 899, image: "images/bp2.png" },
+            { id: 4, name: "Enhypen ID Case", brand: "ENHYPEN", price: 799, image: "images/item2.png" },
+            { id: 5, name: "Enhypen Hoodie", brand: "ENHYPEN", price: 1499, image: "images/item3.png" },
+            { id: 6, name: "Enhypen Phone Case", brand: "ENHYPEN", price: 699, image: "images/item6.png" }
         ];
 
         const productList = document.getElementById('product-list');
@@ -262,9 +266,10 @@
             card.className = 'col-md-4 mb-4';
             card.innerHTML = `
                 <div class="card product-card">
-                    <img src="${product.image}" class="card-img-top product-image" alt="${product.name}">
+                    <img src="${product.image}" class="card-img-top product-image mt-2" alt="${product.name}">
                     <div class="card-body product-details">
                         <h5 class="product-name">${product.name}</h5>
+                        <h6 class="product-brand">${product.brand}</h6>
                         <p class="price">₱${product.price}</p>
                         <div class="btn-container">
                             <button class="btn btn-sm" onclick="addToCart(${product.id})">Add to Cart</button>

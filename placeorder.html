@@ -3,21 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Cart</title>
+    <title>Place Order</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha384-DyZ88mC6Up2uqS8Xh8sUSAcF0ySm91RXuhNCjQuHYLuD7eFI1Gc0i5b6PU6B84Dt" crossorigin="anonymous">
     <style>
         body {
             font-family: 'Poppins', sans-serif;
             background-color: #f8f9fa;
             color: #333;
         }
-
+        
         .container {
             margin-top: 50px;
         }
@@ -37,62 +35,20 @@
         }
 
         .table tfoot td {
-            font-size: 1.2rem;
+            font-size: 1.25rem;
             font-weight: bold;
+            color: #343a40;
+        }
+
+        #grand-total {
+            color: #007bff;
+            font-size: 1.25rem;
         }
 
         .table-bordered th,
         .table-bordered td {
             border: 1px solid #dee2e6 !important;
             vertical-align: middle;
-        }
-
-        .btn {
-            padding: 0.3rem 0.75rem;
-            font-size: 0.875rem;
-            border-radius: 0.2rem;
-        }
-
-        .btn-danger,
-        .btn-success {
-            color: white;
-        }
-
-        #grand-total {
-            color: #007bff;
-        }
-
-        .btn-outline-danger {
-            border: 1px solid #dc3545;
-            color: #dc3545;
-        }
-
-        .btn-outline-danger:hover {
-            background-color: #dc3545;
-            color: white;
-        }
-
-        footer {
-            background-color: black;
-            font-family: 'Poppins', sans-serif;
-        }
-        
-        footer a {
-            color: white;
-            transition: color 0.3s;
-            text-decoration: none;
-        }
-
-        footer a:hover {
-            color: #28a745;
-        }
-
-        footer i {
-            transition: color 0.3s;
-        }
-
-        footer i:hover {
-            color: #28a745;
         }
 
         .cart-item-image {
@@ -102,7 +58,7 @@
             margin-right: 10px;
         }
 
-        .checkout-btn {
+        .placeOrder-btn {
             width: 30%;
             padding: 0.8rem;
             font-size: 1.1rem;
@@ -133,12 +89,27 @@
             letter-spacing: 2px;
         }
 
-        .navbar-nav .nav-link {
-            color: #fff;
-            font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            padding: 10px 15px;
+        footer {
+            font-family: 'Poppins', sans-serif;
+            background-color: black;
+        }
+        
+        footer a {
+            color: white;
+            transition: color 0.3s;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            color: #28a745;
+        }
+
+        footer i {
+            transition: color 0.3s;
+        }
+
+        footer i:hover {
+            color: #28a745;
         }
     </style>
 </head>
@@ -160,23 +131,20 @@
                     <tr>
                         <th>Product</th>
                         <th>Price</th>
-                        <th>Quantity</th>
                         <th>Total</th>
-                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody id="cart-items">
                 </tbody>
                 <tfoot>
                     <tr>
-                        <td colspan="3" class="text-right">Grand Total</td>
-                        <td id="grand-total">₱ 0</td>
-                        <td></td>
+                        <td colspan="2" class="text-right font-weight-bold" style="font-size: 1.25rem;">Grand Total</td>
+                        <td id="grand-total" class="text-right text-primary font-weight-bold" style="font-size: 1.25rem;">₱ 0</td>
                     </tr>
                 </tfoot>
             </table>
         </div>
-        <button class="checkout-btn mt-4" onclick="proceedToCheckout()">Proceed to Checkout</button>    
+        <button class="placeOrder-btn mt-4" onclick="placeOrder()">Place Order</button>    
     </div>
 
     <footer class="py-4 mt-5">
@@ -230,15 +198,7 @@
                             ${item.name}
                         </td>
                         <td>₱ ${item.price.toFixed(2)}</td>
-                        <td class="text-center">
-                            <button onclick="updateQuantity(${id}, -1)" class="btn btn-sm btn-outline-danger mr-2">-</button>
-                            ${item.quantity}
-                            <button onclick="updateQuantity(${id}, 1)" class="btn btn-sm btn-outline-success ml-2">+</button>
-                        </td>
                         <td>₱ ${total.toFixed(2)}</td>
-                        <td class="text-center">
-                            <button onclick="removeItem(${id})" class="btn btn-sm btn-danger">Remove</button>
-                        </td>
                     </tr>
                 `;
                 cartItems.insertAdjacentHTML("beforeend", row);
@@ -247,34 +207,12 @@
             document.getElementById("grand-total").textContent = `₱ ${grandTotal.toFixed(2)}`;
         }
 
-        function updateQuantity(id, change) {
-            let cart = JSON.parse(localStorage.getItem("cart"));
-            if (cart[id]) {
-                cart[id].quantity += change;
-                if (cart[id].quantity <= 0) {
-                    delete cart[id];
-                }
-                localStorage.setItem("cart", JSON.stringify(cart));
-                loadCart();
-            }
-        }
-
-        function removeItem(id) {
-            let cart = JSON.parse(localStorage.getItem("cart"));
-            delete cart[id];
-            localStorage.setItem("cart", JSON.stringify(cart));
-            loadCart();
-        }
-
-        function proceedToCheckout() {
-            const confirmCheckout = confirm("Are you sure you want to proceed to checkout?");
-            if (confirmCheckout) {
-                window.location.href = 'placeorder.html';
-            }
+        function placeOrder() {
+            alert("Proceeding to checkout...");
+            window.location.href = 'placeorder.html';
         }
 
         document.addEventListener("DOMContentLoaded", loadCart);
     </script>
 </body>
 </html>
-
